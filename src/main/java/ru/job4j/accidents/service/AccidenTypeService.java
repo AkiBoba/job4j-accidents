@@ -17,7 +17,7 @@ public class AccidenTypeService {
         this.typeRepository = typeRepository;
     }
 
-    public List<AccidentType> getAll() {
+    public List<AccidentType> getTypes() {
         var result = new ArrayList<AccidentType>();
         for (var type : typeRepository.findAll()) {
             result.add(type);

@@ -17,11 +17,19 @@ public class AccidentService {
         accidentsRepository.save(accident);
     }
 
+    public void delete(Accident accident) {
+        accidentsRepository.delete(accident);
+    }
+
     public List<Accident> getAll() {
         var result = new ArrayList<Accident>();
         for (var accident : accidentsRepository.findAll()) {
             result.add(accident);
         }
         return result;
+    }
+
+    public Accident getById(int id) {
+        return accidentsRepository.findById(id).orElseGet(null);
     }
 }
