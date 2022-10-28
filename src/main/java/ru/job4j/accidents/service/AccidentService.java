@@ -3,32 +3,25 @@ package ru.job4j.accidents.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.repository.AccidentHibernate;
+import ru.job4j.accidents.repository.AccidentRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class AccidentService {
-    private final AccidentHibernate accidentsRepostiory;
+    private final AccidentRepository accidentsRepository;
 
     public void create(Accident accident) {
-        accidentsRepostiory.save(accident);
+        accidentsRepository.save(accident);
     }
 
     public List<Accident> getAll() {
-        return accidentsRepostiory.getAll();
-    }
-
-    public Accident getById(int id) {
-        return accidentsRepostiory.getById(id);
-    }
-
-    public void delete(Accident accident) {
-        accidentsRepostiory.delete(accident);
-    }
-
-    public void update(Accident accident) {
-        accidentsRepostiory.update(accident);
+        var result = new ArrayList<Accident>();
+        for (var accident : accidentsRepository.findAll()) {
+            result.add(accident);
+        }
+        return result;
     }
 }

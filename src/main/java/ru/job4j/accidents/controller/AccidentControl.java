@@ -30,53 +30,53 @@ public class AccidentControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("types", accidenTypeService.getTypes());
+//        model.addAttribute("types", accidenTypeService.getTypes());
         model.addAttribute("rules", accidentRuleService.getRules());
         return "/create";
     }
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute Accident accident, HttpServletRequest request) {
-        accident.setType(accidenTypeService.getById(accident.getType().getId()));
-        if (request.getParameterValues("rIds") != null) {
-            accident.setRules(getRules(request));
-        }
-        accidents.create(accident);
-        return "redirect:/index";
-    }
+//    @PostMapping("/save")
+//    public String save(@ModelAttribute Accident accident, HttpServletRequest request) {
+//        accident.setType(accidenTypeService.getById(accident.getType().getId()));
+//        if (request.getParameterValues("rIds") != null) {
+//            accident.setRules(getRules(request));
+//        }
+//        accidents.create(accident);
+//        return "redirect:/index";
+//    }
 
-    @GetMapping ("/formEdit/{id}")
-    public String edit(@PathVariable("id") int id, Model model) {
-        model.addAttribute("accident", accidents.getById(id));
-        model.addAttribute("types", accidenTypeService.getTypes());
-        model.addAttribute("rules", accidentRuleService.getRules());
-        return "edit";
-    }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident, HttpServletRequest request) {
-        accident.setType(accidenTypeService.getById(accident.getType().getId()));
-        if (request.getParameterValues("rIds") != null) {
-            accident.setRules(getRules(request));
-        }
-        accidents.update(accident);
-        return "redirect:/index";
-    }
-
-    Set<Rule> getRules(HttpServletRequest req) {
-        String[] ids = req.getParameterValues("rIds");
-        Set<Rule> list = new HashSet<>();
-            for (String id : ids) {
-                int idr = Integer.parseInt(id);
-                list.add(accidentRuleService.getById(idr));
-            }
-            return list;
-    }
-
-    @GetMapping ("/delete/{id}")
-    public String delete(@PathVariable("id") int id) {
-        Accident accident = accidents.getById(id);
-        accidents.delete(accident);
-        return "redirect:/index";
-    }
+//    @GetMapping ("/formEdit/{id}")
+//    public String edit(@PathVariable("id") int id, Model model) {
+//        model.addAttribute("accident", accidents.getById(id));
+//        model.addAttribute("types", accidenTypeService.getTypes());
+//        model.addAttribute("rules", accidentRuleService.getRules());
+//        return "edit";
+//    }
+//
+//    @PostMapping("/update")
+//    public String update(@ModelAttribute Accident accident, HttpServletRequest request) {
+//        accident.setType(accidenTypeService.getById(accident.getType().getId()));
+//        if (request.getParameterValues("rIds") != null) {
+//            accident.setRules(getRules(request));
+//        }
+//        accidents.update(accident);
+//        return "redirect:/index";
+//    }
+//
+//    Set<Rule> getRules(HttpServletRequest req) {
+//        String[] ids = req.getParameterValues("rIds");
+//        Set<Rule> list = new HashSet<>();
+//            for (String id : ids) {
+//                int idr = Integer.parseInt(id);
+//                list.add(accidentRuleService.getById(idr));
+//            }
+//            return list;
+//    }
+//
+//    @GetMapping ("/delete/{id}")
+//    public String delete(@PathVariable("id") int id) {
+//        Accident accident = accidents.getById(id);
+//        accidents.delete(accident);
+//        return "redirect:/index";
+//    }
 }
