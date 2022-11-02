@@ -18,4 +18,5 @@
 
 1. Spring ORM - CrudRep
 2. Spring Data
-0. Spring Security - + static
+3. Spring Security - + static
+4. Авторизация через JDBC
