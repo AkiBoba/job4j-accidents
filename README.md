@@ -17,3 +17,6 @@
 В этом уроке мы запустим веб-приложение на Spring.
 
 1. Spring ORM - CrudRep
+2. Spring Data
+3. Spring Security - + static
+4. Авторизация через JDBC

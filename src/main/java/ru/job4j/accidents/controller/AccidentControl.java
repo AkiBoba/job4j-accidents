@@ -37,7 +37,6 @@ public class AccidentControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident, HttpServletRequest request) {
-        accident.setType(accidenTypeService.getById(accident.getType().getId()));
         if (request.getParameterValues("rIds") != null) {
             accident.setRules(getRules(request));
         }
@@ -55,11 +54,10 @@ public class AccidentControl {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Accident accident, HttpServletRequest request) {
-        accident.setType(accidenTypeService.getById(accident.getType().getId()));
         if (request.getParameterValues("rIds") != null) {
             accident.setRules(getRules(request));
         }
-        accidents.update(accident);
+        accidents.create(accident);
         return "redirect:/index";
     }
 
@@ -79,4 +77,5 @@ public class AccidentControl {
         accidents.delete(accident);
         return "redirect:/index";
     }
+
 }

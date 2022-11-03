@@ -2,24 +2,31 @@ package ru.job4j.accidents.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.AccidentType;
-import ru.job4j.accidents.repository.TypeHibernate;
+import ru.job4j.accidents.repository.TypeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class AccidenTypeService {
-    private final TypeHibernate typeHibernate;
+    private final TypeRepository typeRepository;
 
-    public AccidenTypeService(TypeHibernate typeHibernate) {
-        this.typeHibernate = typeHibernate;
+    public AccidenTypeService(TypeRepository typeRepository) {
+        this.typeRepository = typeRepository;
     }
 
     public List<AccidentType> getTypes() {
-        return typeHibernate.getAll();
+        var result = new ArrayList<AccidentType>();
+        for (var type : typeRepository.findAll()) {
+            result.add(type);
+        }
+        return result;
     }
 
-    public AccidentType getById(int typeId) {
-        return typeHibernate.getById(typeId);
+    public Optional<AccidentType> getById(int typeId) {
+        return typeRepository.findById(typeId);
     }
 }
         
