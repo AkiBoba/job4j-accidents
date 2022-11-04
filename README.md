@@ -20,3 +20,4 @@
 2. Spring Data
 3. Spring Security - + static
 4. Авторизация через JDBC
+5. Регистрация пользователя - 
