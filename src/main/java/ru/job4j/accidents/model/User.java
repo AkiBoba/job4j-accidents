@@ -12,7 +12,7 @@ public class User {
 
     private String password;
 
-    @Column(name = "username" ,unique=true)
+    @Column(name = "username", unique = true)
     private String username;
 
     @ManyToOne
