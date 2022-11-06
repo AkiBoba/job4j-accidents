@@ -15,13 +15,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style>
-        .container {
-            width: 1450px;
-            height: auto;
-            background-color: bisque;
-            padding-top: 50px;
-            text-align: left;
-        }
         body {
             padding: 50px;
             background-color: darkgrey;
@@ -30,26 +23,10 @@
             text-align: center;
             background-color: cadetblue;
         }
-        .table
-        {
-            display:table;
-            text-align: left;
-        }
 
-        .table-row
+        .card-header.message
         {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .table-cell
-        {
-            width: 20%;
-        }
-
-        .table-cell:nth-child(3)
-        {
-            margin-right: 0px;
+            background-color: firebrick;
         }
     </style>
 
@@ -60,6 +37,10 @@
     <div class="card" style="width: 100%">
         <div class="card-header" >
             Регистрация нового пользователя.
+        </div>
+        <div class="card-header message" th:if="${message != null}">
+            <div th:text= "${message}">
+            </div>
         </div>
         <div class="card-body">
             <div th:if="${not #lists.isEmpty(errorMessage)}" class="alert alert-danger" role="alert">
